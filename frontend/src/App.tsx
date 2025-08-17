@@ -1,0 +1,157 @@
+import { Switch, Route, useLocation } from "wouter";
+import { queryClient } from "./lib/queryClient";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "@/components/ui/toaster";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { ThemeProvider } from "@/components/ui/theme-provider";
+import { Button } from "@/components/ui/button";
+import { useAuth, AuthProvider } from "@/hooks/use-auth";
+import { ProgressDialogProvider } from "@/contexts/ProgressDialogContext";
+import AuthPage from "@/pages/auth-page";
+import NotFound from "@/pages/not-found";
+import Landing from "@/pages/landing";
+import Dashboard from "@/pages/dashboard";
+import Study from "@/pages/study";
+import StudyModeSelection from "@/pages/study-mode-selection";
+import CategorySelection from "@/pages/category-selection";
+import SubtopicSelection from "@/pages/subtopic-selection";
+import ReviewMode from "@/pages/review-mode";
+import PracticeMode from "@/pages/practice-mode";
+import QuizSetup from "@/pages/quiz-setup";
+import QuizMode from "@/pages/quiz-mode";
+import QuizResults from "@/pages/quiz-results";
+import MockExam from "@/pages/mock-exam";
+import ExamResults from "@/pages/exam-results";
+import BattleMode from "@/pages/battle-mode";
+import Profile from "@/pages/profile";
+import AdminDashboard from "@/pages/admin/dashboard";
+import AccessRequests from "@/pages/admin/access-requests";
+import UserManagement from "@/pages/admin/user-management";
+import ContentManager from "@/pages/admin/content-manager";
+import BottomNav from "@/components/navigation/bottom-nav";
+
+function Router() {
+  const { user, isLoading, logoutMutation } = useAuth();
+  const [, setLocation] = useLocation();
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <Switch>
+        <Route path="/" component={AuthPage} />
+        <Route path="/auth" component={AuthPage} />
+        <Route component={AuthPage} />
+      </Switch>
+    );
+  }
+
+  if ((user as any)?.status === 'pending') {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background p-4">
+        <div className="text-center max-w-md">
+          <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i className="fas fa-clock text-white text-xl"></i>
+          </div>
+          <h1 className="text-2xl font-bold text-foreground mb-2">Account Pending Approval</h1>
+          <p className="text-muted-foreground">
+            Your account is currently under review. You'll receive access once an administrator approves your request.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if ((user as any)?.status === 'rejected') {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background p-4">
+        <div className="text-center max-w-md">
+          <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i className="fas fa-times text-white text-xl"></i>
+          </div>
+          <h1 className="text-2xl font-bold text-foreground mb-2">Access Denied</h1>
+          <p className="text-muted-foreground mb-6">
+            Your account request has been declined. Please contact support for more information.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              variant="default" 
+              onClick={() => {
+                logoutMutation.mutate();
+                setLocation("/auth");
+              }}
+              disabled={logoutMutation.isPending}
+            >
+              {logoutMutation.isPending ? "Signing out..." : "Sign In Again"}
+            </Button>
+            <Button variant="outline" onClick={() => window.open("mailto:support@avex.com", "_blank")}>
+              Contact Support
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const isAdmin = (user as any)?.role === 'admin';
+
+  return (
+    <div className="min-h-screen bg-background pb-16">
+      <Switch>
+        <Route path="/" component={Dashboard} />
+        <Route path="/study" component={StudyModeSelection} />
+        <Route path="/study-old" component={Study} />
+        <Route path="/study/:mode/categories" component={CategorySelection} />
+        <Route path="/study/:mode/category/:categoryId/subtopics" component={SubtopicSelection} />
+        <Route path="/study/review/category/:categoryId/subtopic/:subtopicId" component={ReviewMode} />
+        <Route path="/study/practice/category/:categoryId/subtopic/:subtopicId" component={PracticeMode} />
+        <Route path="/study/quiz/category/:categoryId/subtopic/:subtopicId" component={QuizSetup} />
+        <Route path="/study/quiz/category/:categoryId/subtopic/:subtopicId/questions" component={QuizMode} />
+        <Route path="/study/quiz-results" component={QuizResults} />
+        <Route path="/mock-exam" component={MockExam} />
+        <Route path="/exam-results" component={ExamResults} />
+        <Route path="/battle" component={BattleMode} />
+        <Route path="/profile" component={Profile} />
+        
+        {/* Admin routes */}
+        {isAdmin && (
+          <>
+            <Route path="/admin" component={AdminDashboard} />
+            <Route path="/admin/access-requests" component={AccessRequests} />
+            <Route path="/admin/users" component={UserManagement} />
+            <Route path="/admin/content" component={ContentManager} />
+          </>
+        )}
+        
+        <Route component={NotFound} />
+      </Switch>
+      <BottomNav />
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <ProgressDialogProvider>
+          <ThemeProvider defaultTheme="light" storageKey="avex-ui-theme">
+            <TooltipProvider>
+              <Toaster />
+              <Router />
+            </TooltipProvider>
+          </ThemeProvider>
+        </ProgressDialogProvider>
+      </AuthProvider>
+    </QueryClientProvider>
+  );
+}
+
+export default App;
