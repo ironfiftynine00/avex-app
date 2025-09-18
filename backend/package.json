@@ -4,10 +4,11 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "build": "esbuild index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
-    "start": "npm run build && NODE_ENV=production node dist/index.js",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
     "dev": "NODE_ENV=development tsx index.ts",
-    "db:push": "drizzle-kit push"
+    "db:push": "drizzle-kit push",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "@google-cloud/storage": "^7.16.0",
@@ -29,6 +30,7 @@
     "openid-client": "^6.6.3",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
+    "typescript": "5.6.3",
     "ws": "^8.18.0",
     "zod": "^3.24.2",
     "zod-validation-error": "^3.4.0"
@@ -44,8 +46,7 @@
     "@types/ws": "^8.5.13",
     "drizzle-kit": "^0.30.4",
     "esbuild": "^0.25.0",
-    "tsx": "^4.19.1",
-    "typescript": "5.6.3"
+    "tsx": "^4.19.1"
   },
   "optionalDependencies": {
     "bufferutil": "^4.0.8"
