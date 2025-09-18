@@ -1,0 +1,35 @@
+RAILWAY ZERO-CONFIG DEPLOYMENT GUIDE
+=====================================
+
+This package is optimized for Railway's zero-config deployment in 2025.
+
+DEPLOYMENT STEPS:
+1. Upload this entire folder to Railway (no config files needed)
+2. Set these environment variables in Railway Dashboard:
+
+   DATABASE_URL=your-postgresql-connection-string
+   SESSION_SECRET=your-strong-random-secret  
+   FRONTEND_URL=https://your-vercel-url.vercel.app
+   VITE_FIREBASE_PROJECT_ID=your-firebase-project-id
+   VITE_FIREBASE_APP_ID=your-firebase-app-id
+   VITE_FIREBASE_API_KEY=your-firebase-api-key
+
+3. Deploy!
+
+WHAT CHANGED:
+- No railway.json file (Railway auto-detects Node.js)
+- Simple "start" script using tsx directly
+- tsx moved to dependencies (needed in production)
+- Uses process.env.PORT (Railway requirement)
+
+Railway automatically:
+- Detects Node.js via package.json
+- Runs "npm install"
+- Executes "npm start"
+- Assigns SSL certificate
+- Provides public URL
+
+If deployment still fails, try:
+- Check Railway logs for specific errors
+- Ensure all environment variables are set
+- Verify DATABASE_URL connects to your PostgreSQL database
