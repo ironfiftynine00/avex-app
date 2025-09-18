@@ -1,0 +1,581 @@
+COMMAND PROMPT: AMT Reviewer App with Review, Mock Exam, Infographics, Competitive Mode, Skips, and Power-Ups
+Command: Build a cross-platform AMT Reviewer App for aviation students that supports category-based review, auto/manual-timed mock exams, interactive infographics, and competitive multiplayer quizzes with power-ups. Includes intelligent skip limits, explanation feedback, and real-time scoring.
+NEW: MOCK EXAM SKIP RULES
+Exam Behavior (15/30/50 Questions):
+Skip Limits:
+15 items → Max 1 skip
+30 items → Max 2 skips
+50 items → Max 3 skips
+
+
+Behavior:
+Skipped questions are saved to a “To Be Answered” list
+App auto-returns user to remaining skipped questions after the last regular item
+Cannot submit the exam unless all questions are answered
+Real-Time Scoring:
+Show current score after each answer:
+Score: 7/12 (58.3%)
+Timer:
+Auto or manually set by user
+Time continues running even while skipping
+
+
+COMPETITIVE MODE — LIVE QUIZ BATTLE
+Game Setup:
+Players join via room code or invite
+Select:
+Number of questions
+Category or Random
+Real-time timer and scoreboard
+POWER-UPS (Player-Activated)
+Each player gets 1–2 randomly selected power-ups per game:
+Power-Up
+Effect Description
+50/50
+Removes two incorrect options
+Time Freeze
+Freezes timer for 5 seconds (for that player only)
+Speed Boost
+Doubles your score if you answer within 3 seconds
+Sabotage
+Shakes one opponent's screen for 2 seconds
+Second Chance
+Allows retry on last incorrect answer
+Shield
+Protects from one Sabotage effect
+
+Game Modes:
+Classic Race: Fastest + most correct wins
+Sudden Death: Miss one = out
+Team Mode (2v2 or 3v3, optional)
+End of Game:
+Leaderboard
+Individual question review
+Option to rematch or review all explanations
+
+
+STUDY MODE (REVIEW + PRACTICE)
+Navigation:
+Select Main Category
+Select Sub-topic
+Review Tab:
+Infographics, diagrams, or summaries (non-answerable)
+Practice Tab:
+Flashcards
+Shows answer + explanation
+Filter by topic
+Track starred/bookmarked questions
+
+
+✅ Here’s the fully integrated command version of your AMT Reviewer App Spec — ideal for use as a prompt for AI app generators, design tools like Figma, UI builders, or low-code platforms.
+
+✅ FINAL COMMAND PROMPT FOR AI APP GENERATOR / UI BUILDER
+Command:
+ Build a fully functional AMT Reviewer App for aviation certification students called AVEX, designed with gamified study tools, fixed mock exams, admin-controlled access, and premium-only features — all using the Avex design system.
+
+✈️ App Overview
+Name: AVEX – Aviation Maintenance Technician Reviewer
+ Design Style: Avex Style Guide
+ Target Users: AMT students, instructors, and admins
+ Platforms: Web app (mobile-first, PWA-ready)
+
+🧠 Core Features
+Study Modes: Review (infographics), Practice (flashcards), Quiz (MCQ with timer, subtopic filters)
+
+
+Mock Exams: Fixed-length, per category, randomized, with pass tracking
+
+
+Multiplayer Quizzes: Battle Mode with power-ups and live leaderboards
+
+
+Gamified Profiles: Badges, streaks, leaderboard, profile editor
+
+
+Secure Login: Single device session, screenshot blocking (dashboard only)
+
+
+Premium-only Section: Practical Guide (locked unless admin grants)
+
+
+Admin Dashboard: Manual user approval, user analytics, badge manager, question importer, content editor
+
+
+
+🧩 Navigation Structure
+Basic User Tabs:
+Dashboard
+
+
+Study (Review, Practice, Quiz)
+
+
+Mock Exam
+
+
+Battle Mode
+
+
+Profile
+
+
+🔒 Practical Guide (locked unless Premium)
+
+
+Admin Tabs:
+Dashboard
+
+
+Access Requests
+
+
+User Management
+
+
+Content Editor
+
+
+Badge Manager
+
+
+Reports & Logs
+
+
+Practical Guide Monitor
+
+
+🔍 CATEGORY & SUBTOPIC FILTER SYSTEM
+This structure powers the filtering logic across Practice, Quiz, Study, and Admin interfaces:
+🔧 Aircraft Maintenance
+Materials & Processes
+
+
+Ground Operation & Servicing
+
+
+Fluid Lines and Fittings
+
+
+Cleaning & Corrosion Control
+
+
+Maintenance Forms & Records
+
+
+Sheet Metal & Non-Metallic Structures
+
+
+Hydraulic & Pneumatic Power System
+
+
+Aircraft Fuel System
+
+
+Aircraft Landing Gear System
+
+
+Reciprocating Engines
+
+
+Turbine Engines
+
+
+Fuel Metering Systems
+
+
+Engine Fuel System
+
+
+Induction & Engine Airflow
+
+
+Engine Inspection
+
+
+Lubrication System
+
+
+Propellers
+
+
+Auxiliary Power Unit
+
+
+📐 Aircraft Engineering
+Materials & Processes
+
+
+Fluid Lines & Fittings
+
+
+Aircraft Instrument System
+
+
+Sheet Metal & Non-Metallic Structures
+
+
+Welding
+
+
+Assembly & Rigging
+
+
+Wood Structures
+
+
+Aircraft Finishes
+
+
+Aircraft Electrical System
+
+
+Engine Electrical System
+
+
+Engine Inspection
+
+
+📘 Air Law & Airworthiness
+PCAR Part 1–8
+
+
+S/AFCAR/PCAR Files
+
+
+Airframe Inspection
+
+
+Maintenance Forms & Records
+
+
+Maintenance Publications
+
+
+Mechanic Privileges & Limitations
+
+
+🔥 Powerplant Rating
+Reciprocating Engines
+
+
+Turbine Engines
+
+
+Engine Instrument Systems
+
+
+Ignition & Starting Systems
+
+
+Fuel Metering Systems
+
+
+🧠 Human Performance and Limitations
+Human Performance (OASIS)
+
+
+Mechanic Privileges & Limitations
+
+
+🌎 Natural Science & General Knowledge
+Mathematics
+
+
+Basic Physics
+
+
+Materials & Processes
+
+
+🛠 Airframe Rating
+Wood Structures
+
+
+Aircraft Finishes
+
+
+Sheet Metal & Non-Metallic Structures
+
+
+Assembly & Rigging
+
+
+Aircraft Landing Gear System
+
+
+Hydraulic & Pneumatic Power System
+
+
+Aircraft Fuel System
+
+
+Ice & Rain Control System
+
+
+Fire Protection System
+
+
+Aircraft Electrical System
+
+
+Engine Electrical System
+
+
+Position & Warning System
+
+
+⚡ Electronics / Avionics (JAI)
+Basic Electricity
+
+
+Hydraulic & Pneumatic Power System
+
+
+Cabin Atmosphere Control System
+
+
+Aircraft Instrument System
+
+
+Communications & Navigation Systems
+
+
+Aircraft Electrical System
+
+
+Position & Warning System
+
+
+Ice & Rain Control System
+
+
+Fire Protection System
+
+🔐 User Access Flow
+New Sign-Up: Account marked “Pending”
+
+
+Admin Panel > Access Requests Tab:
+
+
+Approve → Send email or show "Congratulations!" screen
+
+
+Reject → Show access denied message
+
+
+Set: Role (Basic / Premium), subscription expiry
+
+
+Approved users are redirected to dashboard
+
+
+
+🎖️ Badge System
+Badge
+Unlock Condition
+🐣 Rookie Wrencher
+Account created
+📚 Study Starter
+First practice session
+✅ First Pass!
+First mock exam passed
+🛫 Air Law Ace
+Air Law category passed
+🔧 Maintenance Pro
+All Aircraft Maintenance passed
+🧠 Consistent Cadet
+7-day streak
+⚔️ Quiz Champion
+Win 3 battle quizzes
+👑 Full License!
+All categories ≥70%
+
+
+🖼 UI/UX Design System (Avex)
+Font: Inter (400–700)
+
+
+Primary Colors: #3B82F6, #1E40AF
+
+
+Secondary Accents: #6366F1, #8B5CF6, #7C3AED
+
+
+Card Styling: rounded-lg hover:scale-105 hover:shadow-xl transition-all
+
+
+Responsiveness: Mobile-first, bottom nav, grid layout
+
+
+Accessibility: Focus rings, screen reader labels, tap targets ≥44px
+
+
+Dark Mode: Toggle with CSS vars, maintains contrast
+
+
+Flashcards: 3D flip animation
+
+
+Buttons: Variants – primary / ghost / danger / outline
+
+
+Progress Bars: Category-colored, animated fill
+
+
+
+📚 Study Mode Features
+Infographics: Per category & subtopic
+
+
+Flashcards: Flip-based with bookmarks and streak stats
+
+
+Quiz: Select subtopics (multi-select dropdown), with skips & timers
+
+
+20 items = 20 min, 30 = 30 min, 50 = 60 min
+
+
+Max skips: 1/2/3
+
+
+Horizontal Category Carousel + Subtopic Filter Dropdowns
+
+
+
+🧪 Mock Exam Rules
+Category
+Questions
+Time
+Aircraft Maintenance
+30
+30 mins
+Aircraft Engineering
+30
+30 mins
+Airframe Rating
+50
+60 mins
+Powerplant Rating
+50
+60 mins
+Natural Science
+30
+30 mins
+Air Law & Airworthiness
+30
+30 mins
+Human Performance
+30
+30 mins
+Electronics / Avionics
+50
+60 mins
+
+
+≥70% shows “Pass” screen, grants badge
+
+
+<70% offers “Retake” or “Review Mistakes”
+
+
+
+⚔️ Battle Mode
+Game Types: Classic, Sudden Death, Team
+
+
+Power-ups:
+ 🔍 50/50, ⏱ Time Freeze, 🚀 Speed Boost, 💣 Sabotage, 🛡 Shield, 🎯 Second Chance
+
+
+Real-time Features: Room code, progress bars, leaderboard
+
+
+Theme: Violet (#7C3AED), energetic animations
+
+
+
+🧑‍💼 Admin Capabilities
+User Queue: View pending users, Approve/Reject, set role (basic/premium), access timer
+
+
+Manual Approvals: In-app congratulatory screen or email
+
+
+Add/Edit Content: Categories, subtopics, flashcards, MCQs, infographics
+
+
+JSON Question Importer or Google Form-style manual input
+
+
+User Tracker: Logs, streaks, progress visualizations
+
+
+Badge Manager: View & assign badge per user
+
+
+Drag-and-drop Builder: Forms, cards, infographics
+
+
+
+🧑‍🎓 Student UI Flow
+Sign up
+
+
+See “Pending Approval” screen
+
+
+If approved, see “Congratulations” screen → redirected to dashboard
+
+
+Access based on role:
+
+
+Basic: Study, Exam, Battle
+
+
+Premium: Unlock Practical Guide
+
+
+Profile includes: Editable name, image, theme color, badge grid
+
+
+
+📃 Sample Database Schema (SQL-style)
+users(
+  id, username, email, password_hash, role,
+  status ENUM('pending', 'approved', 'rejected'),
+  subscription_type ENUM('basic', 'premium'),
+  subscription_end, theme_color, profile_image_url
+)
+
+
+user_requests(id, user_id, request_type, status, timestamp)
+practical_guide_access(user_id, accessed_at)
+badges(user_id, badge_name, earned_at)
+questions(id, category_id, subtopic_id, type, content, explanation, correct_answer)
+
+
+✅ Optional Next Steps
+Would you like this converted into:
+Figma-ready design system
+
+
+TailwindCSS + React component starter kit
+
+
+Backend schema + API routes for Node.js/Express or Firebase
+
+
+App boilerplate in Flutter / React Native / Vue
+
+
+No-code/low-code config (e.g., Glide, Softr, Builder.io)
+
+
+Let me know what you'd like to execute next, and I’ll generate the output directly.
+
+
+
+

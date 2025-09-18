@@ -1,0 +1,42 @@
+🛠️ Types of Inspections and Regulations
+Aviation regulations are crucial for ensuring aircraft safety. The Federal Aviation Administration (FAA) in the US and the Civil Aviation Authority of the Philippines (CAAP) have specific rules for inspections and maintenance.
+📝 100-Hour and Annual Inspections
+These are mandatory inspections for many aircraft.
+100-Hour Inspections: Required for aircraft used for hire, like those for flight instruction or passenger transport. These are governed by 14 CFR Part 91 (General Operating and Flight Rules). An aircraft can be flown for a maximum of 10 additional hours to a location where the inspection can be performed. This doesn't require a special permit.
+Annual Inspections: Required for all certified aircraft. An aircraft that's due for an annual inspection cannot be flown unless a special flight permit (ferry permit) has been issued.
+Personnel Requirements: A mechanic with Airframe and Powerplant (A&P) ratings can perform a 100-hour inspection. An Inspection Authorization (IA) is required to perform an annual inspection.
+✈️ Large Airplanes and Turbine-Powered Aircraft
+These more complex aircraft follow a specific inspection program authorized under 14 CFR Part 91, Subpart E. This program offers a more tailored and flexible inspection schedule than the standard 100-hour or annual inspections.
+🚨 Airworthiness Directives (ADs)
+ADs are legally binding regulations issued by aviation authorities to address unsafe conditions. Compliance with an AD is mandatory and must be documented in the aircraft's maintenance records.
+
+🛠️ Understanding Repairs, Alterations, and Maintenance
+Work performed on an aircraft is categorized to determine who can do the work and what paperwork is needed.
+🔄 Repair vs. Alteration
+Repair: Restoring a damaged or worn-out component to a safe and airworthy condition. It's about fixing what's broken.
+Alteration: Making a change to the original design of the aircraft, powerplant, or a component.
+🔍 Minor vs. Major
+This distinction is crucial. Major repairs and alterations significantly affect the aircraft's weight, balance, structural strength, or other airworthiness factors and require specific data, forms, and approvals.
+Major Repairs: Examples include restoring a damaged engine mount or repairing a wing spar.
+Major Alterations: Examples include strengthening a fuselage longeron or installing radio equipment under a Supplemental Type Certificate (STC).
+Minor Alterations: Changes to structural elements to improve service life, as long as the weight change is minimal.
+Preventive Maintenance: Simple, routine tasks that don't involve complex procedures, such as replacing landing gear tires. A licensed pilot can perform preventive maintenance on an aircraft they own and operate.
+
+📝 Key Documentation and Roles
+Proper documentation and the right personnel are essential to maintaining an aircraft's airworthiness.
+📃 Maintenance Release
+This is the formal certification confirming that maintenance work was completed according to airworthiness standards. It officially returns the aircraft or component to service and must include detailed information like the make, model, and serial number.
+🔄 Overhaul vs. Rebuild
+Overhaul: A thorough disassembly, cleaning, inspection, and repair of a component.
+Rebuild: A more comprehensive process that restores an item to the same tolerances and limits as a new item.
+🧑‍💼 Who is Responsible?
+Owner/Lessee: Ultimately responsible for ensuring the aircraft is maintained in an airworthy condition.
+Licensed Aircraft Maintenance Mechanic: Directly responsible for performing and certifying maintenance tasks.
+Certified Repair Station: Required for repairing specialized items like aircraft instruments.
+Line Maintenance Manager: Responsible for ensuring hangar maintenance is done to the correct standards.
+After a major repair or alteration, a test flight by at least a private pilot is required to confirm airworthiness.
+
+🇵🇭 Important Philippine Civil Aviation Regulations (PCAR)
+PCAR Part 5 (Airworthiness): Prescribes requirements for certifying aircraft and ensuring their continuing airworthiness in the Philippines.
+State of Design: The country that approved the original type certificate for the aircraft.
+State of Registry: The country where the aircraft is registered.

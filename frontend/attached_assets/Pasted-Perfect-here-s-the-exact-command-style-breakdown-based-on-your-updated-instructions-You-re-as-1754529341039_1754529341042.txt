@@ -1,0 +1,91 @@
+Perfect — here’s the **exact command-style breakdown** based on your updated instructions. You're asking to **start from the Study Mode panel**, with **grid navigation to Categories → Subtopics → Questions**, without changing the existing logic for questions.
+
+---
+
+## ✅ AI Command (for Replit/Frontend Devs)
+
+### 🔁 **Overview Navigation Flow:**
+
+```
+Study Mode Panel (grid of modes: Review, Practice, Quiz)
+      ↓
+Category Selection (grid of categories)
+      ↓
+Subtopic Selection (grid of subtopics under selected category)
+      ↓
+Question Display (existing logic stays)
+```
+
+---
+
+### 📌 **1. Study Mode Panel (Grid View)**
+
+**Command:**
+
+> On the study mode panel, display a grid layout with 3 selectable cards:
+>
+> * **Review**
+> * **Practice**
+> * **Quiz**
+
+> When a user clicks a mode card, redirect them to a new page:
+> `/study/:mode/categories`
+> (e.g., `/study/review/categories`)
+
+---
+
+### 📌 **2. Category Selection Page**
+
+**Command:**
+
+> On the page `/study/:mode/categories`, display all categories in a responsive grid layout.
+> When a category is clicked, navigate to:
+> `/study/:mode/category/:categoryId/subtopics`
+
+---
+
+### 📌 **3. Subtopic Selection Page**
+
+**Command:**
+
+> On the page `/study/:mode/category/:categoryId/subtopics`, show all subtopics under the selected category as a grid of cards.
+> When a subtopic is clicked, navigate to:
+> `/study/:mode/category/:categoryId/subtopic/:subtopicId/questions`
+
+---
+
+### 📌 **4. Question Display Page**
+
+**Command:**
+
+> On the page `/study/:mode/category/:categoryId/subtopic/:subtopicId/questions`, display questions one by one based on the current logic already implemented in your app for study mode (Review, Practice, or Quiz).
+> Keep timer, scoring, answer explanation, and transitions exactly as they currently are.
+
+---
+
+## ✅ What You’re Not Changing
+
+* ✅ The logic for question handling.
+* ✅ The structure of your categories/subtopics/questions.
+* ✅ The data structure or back-end.
+
+---
+
+## ✅ Bonus UI Suggestions:
+
+If using React or a component-based system, structure your routes and components like:
+
+```
+/components
+  └─ StudyModeSelection.jsx
+  └─ CategorySelection.jsx
+  └─ SubtopicSelection.jsx
+  └─ QuestionDisplay.jsx
+
+/routes
+  └─ /study/[mode]/categories
+  └─ /study/[mode]/category/[categoryId]/subtopics
+  └─ /study/[mode]/category/[categoryId]/subtopic/[subtopicId]/questions
+```
+
+Would you like a sample code template (React + TailwindCSS) to start this flow?

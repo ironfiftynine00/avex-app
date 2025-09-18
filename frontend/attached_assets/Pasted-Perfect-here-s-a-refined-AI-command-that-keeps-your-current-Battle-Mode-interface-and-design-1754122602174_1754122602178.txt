@@ -1,0 +1,76 @@
+Perfect — here’s a **refined AI command** that keeps your **current Battle Mode interface and design exactly as it is**, but **makes it fully functional and playable**, both for users and for admin preview:
+
+---
+
+### ✅ **AI Command: Make Battle Mode Fully Playable – Keep Current Interface**
+
+#### 🎮 **1. Full Gameplay Functionality (User Side)**
+
+Keep the current interface, design, and panel layout exactly the same — only activate the underlying logic:
+
+* ✅ **Create Room**
+
+  * Let users create a battle room.
+  * Show current "Waiting for player…" screen.
+  * Start automatically once a second player joins.
+
+* ✅ **Join Battle**
+
+  * Allow users to enter an existing Room ID.
+  * Display both players in the lobby.
+  * Start battle once ready.
+
+* ✅ **Quick Match**
+
+  * Auto-match with an available user.
+  * If no user is found in 10 seconds, auto-match with a bot to simulate 1v1.
+
+* ✅ **Gameplay Mechanics**
+
+  * Show one question at a time to both users.
+  * Use real-time or turn-based logic.
+  * Allow power-ups to work (freeze, skip, double points, etc.).
+  * Track and update both players' scores live.
+  * Finish the game with a **"Winner" / "Try Again"** screen and show final scores.
+
+---
+
+#### 🧪 **2. Admin Panel – Start Demo Battle (Preview Mode)**
+
+* When admin clicks **“Start Demo Battle”**, **simulate** a full battle flow **without real users**:
+
+  * Auto-start a demo battle with a bot/dummy player.
+  * Admin sees actual gameplay with:
+
+    * Questions shown
+    * Power-ups usable
+    * Score updates
+    * Win/Loss screen
+* All this must use the **existing Battle Mode panel layout**, not a different preview page.
+
+---
+
+#### ⚙️ **3. Keep Current Design and Interface (DO NOT MODIFY UI)**
+
+* Retain:
+
+  * Existing layout and panels.
+  * Power-up button styles.
+  * Scoreboard visuals.
+  * Transition animations.
+* Only implement back-end logic and functionality — no front-end redesign.
+
+---
+
+#### 🛠️ **4. Add Error Handling**
+
+* Show clean error prompts if:
+
+  * No room found
+  * Room full
+  * Opponent disconnects
+  * Quick match times out
+
+---
+
+This command ensures your Battle Mode **works exactly as expected**, while keeping your existing design untouched. Let me know if you want socket logic, Firebase sync, or any backend tech guidance.

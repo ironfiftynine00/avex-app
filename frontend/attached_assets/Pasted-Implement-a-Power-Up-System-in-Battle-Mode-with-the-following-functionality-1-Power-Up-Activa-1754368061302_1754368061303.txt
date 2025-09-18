@@ -1,0 +1,44 @@
+Implement a Power-Up System in Battle Mode with the following functionality:
+
+1. **Power-Up Activation Rules**:
+   - A player earns 1 power-up selection after:
+     - 3 correct answers in a row (score streak)
+     - OR answering 3 questions consecutively faster than their opponent.
+   - Once a power-up is earned, show a modal or drawer for player to choose **1 out of 3 randomly offered power-ups**.
+
+2. **Power-Up Types & Effects**:
+
+   **Support**
+   - 🔍 `FiftyFifty`: Remove 2 incorrect choices from current question.
+   - ➕ `ExtraTime`: Add 15 seconds to the player’s current timer.
+   - 👁️ `SmartHint`: Reveal 50% of the explanation or a key hint.
+
+   **Offensive**
+   - ⏰ `TimeFreeze`: Pause opponent’s timer and add +10 seconds to player’s timer.
+   - 💥 `ScreenQuake`: Shake opponent’s screen visually (CSS animation/disruption effect).
+
+   **Boost**
+   - ⚡ `SpeedBoost`: Double points for next correct answer.
+   - 📈 `ScoreMultiplier`: 3x points for next two correct answers.
+   - 🔧 `HydraulicBoost`: Instantly adds +500 points (aviation-themed name).
+
+   **Defense**
+   - 🛡️ `Shield`: Blocks the next sabotage power-up used by opponent.
+   - ⭐ `StreakProtector`: Prevents next wrong answer from breaking the player’s current streak.
+   - 🔄 `SecondChance`: Allows retry of the last incorrect answer (same question, no point loss).
+
+3. **Power-Up Usage**:
+   - Players can access earned power-ups via a UI inventory or button panel.
+   - Once a power-up is used, disable it and log usage.
+   - Add frontend animation/feedback (e.g., vibration, glow, effects) per power-up type.
+   - Ensure logic is synced in real-time for both players using sockets or pub-sub model.
+
+4. **Admin Panel Preview**:
+   - In the Admin Panel > Battle Mode section, add a demo toggle to simulate:
+     - Player earning a power-up
+     - Selecting and using a power-up
+     - Displaying power-up logs or stats.
+
+5. **Maintain Current UI**:
+   - Integrate these features without altering the existing Battle Mode interface design.
+   - Use modals, icons, or floating action buttons to preserve layout.

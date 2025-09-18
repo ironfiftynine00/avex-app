@@ -1,0 +1,114 @@
+Implement a fully functional and responsive Power-Up System for the Battle Mode. Apply the following logic, effects, and UI integration:
+
+---
+
+🔹 **Power-Up Activation Rules**:
+- Track each player’s streak and speed:
+  - If player gets **3 correct answers in a row**, unlock power-up.
+  - If player answers **3 questions faster than opponent**, unlock power-up.
+- When criteria met, show a **power-up selection modal** where the user selects 1 out of 3 random power-ups.
+
+---
+
+🔹 **Real-Time Power-Up Usage Mechanics**:
+
+Each power-up must be usable during an active battle. Trigger logic must work per player via socket communication to sync effects between opponents.
+
+### ✅ Support Arsenal
+
+🔍 **FiftyFifty**
+- On use, dynamically remove **2 incorrect choices** from the current question.
+- Implementation:
+  - Remove 2 incorrect options from DOM.
+  - Broadcast only on user screen, not opponent.
+
+➕ **ExtraTime**
+- Add **15 seconds** to current user’s countdown timer.
+- Emit updated time via socket.
+
+👁️ **SmartHint**
+- Reveal **50% of explanation** (e.g., the first sentence or key concept).
+- Shown in tooltip/hint box below the question.
+
+---
+
+### ✅ Offensive Arsenal
+
+⏰ **TimeFreeze**
+- Pause opponent’s timer for **10 seconds**, and add +10 seconds to player’s timer.
+- Use socket event to:
+  - Freeze enemy’s timer (`isFrozen: true`)
+  - Set timeout to unfreeze after 10s
+  - Update both timers visually
+
+💥 **ScreenQuake**
+- Trigger a **CSS-based violent screen shake** on opponent’s game view.
+- Emit socket event `triggerShake`, apply CSS animation for 3s on opponent screen.
+
+---
+
+### ✅ Boost Arsenal
+
+⚡ **SpeedBoost**
+- Next correct answer = **2x points**
+- Set user state `boostNextCorrect = true`
+- On next correct, double score, then reset flag.
+
+📈 **ScoreMultiplier**
+- Next 2 correct answers = **3x points**
+- Set `multiplierCount = 2`, `multiplierValue = 3`
+- Decrease counter per correct answer, reset after 2 uses.
+
+🔧 **HydraulicBoost**
+- Instantly add **+500 points** to player score.
+- Update player score immediately and emit change via socket.
+
+---
+
+### ✅ Defense Arsenal
+
+🛡️ **Shield**
+- Block the **next sabotage power-up** used on the player.
+- Set `hasShield = true`
+- On incoming sabotage (e.g., TimeFreeze/ScreenQuake), nullify effect if shield is active and consume shield.
+
+⭐ **StreakProtector**
+- Prevents next wrong answer from breaking streak.
+- Set `hasStreakProtector = true`
+- On incorrect answer, check:
+  - If active, retain streak, consume protector
+
+🔄 **SecondChance**
+- Allow retry of the last wrong question.
+- Show retry modal immediately after incorrect response.
+- Player must re-answer, replace old result if correct.
+
+---
+
+🔹 **Power-Up UI Implementation**
+
+- In game screen, create a **floating power-up button** or **bottom drawer** with earned power-ups.
+- Disable used power-ups.
+- Show usage animation per type (shake, glow, timer boost, etc).
+- Make all UI mobile-responsive with TailwindCSS or CSS Grid.
+
+---
+
+🔹 **Admin Preview Panel**
+
+- In Admin > Battle Mode, create demo panel to:
+  - Simulate earning power-ups
+  - Use/test each power-up
+  - View logs of power-up usage per player
+
+---
+
+🔹 **Technical Requirements**
+
+- Use socket.io for real-time syncing between opponents.
+- Ensure proper player state tracking: `powerUpsOwned`, `usedPowerUps`, `currentStreak`, `fastAnswerCount`, `activeEffects`.
+- All effects must be scoped to per-player logic and not disrupt global game state.
+
+---
+
+⚠️ Maintain current interface and UI styling. All features must integrate without altering existing layout or panel design.

@@ -1,0 +1,75 @@
+To make the **overall progress percentage** work for your reviewer app, we need to define **what counts as "progress"**, and **how much weight** each part of your app contributes to the total.
+
+---
+
+### 🔧 BASIS FOR CALCULATION
+
+You can track user progress **per subtopic** and then calculate the overall progress as a percentage of all subtopics completed.
+
+Each **subtopic** can be considered "complete" if the user has:
+
+1. ✅ Viewed the **Review** (study) materials (e.g., text/images)
+2. ✅ Answered **Practice** questions
+3. ✅ Taken the **Quiz**
+4. ✅ Taken the **Mock Exam** (if applicable)
+
+Let’s break this down into a scoring system:
+
+---
+
+### ✅ SUBTOPIC PROGRESS SCORING (per subtopic)
+
+For each subtopic, define a **completion status** like:
+
+| Activity      | Completion Criteria                           | Weight (%) |
+| ------------- | --------------------------------------------- | ---------- |
+| Review Mode   | User opened/viewed the review content         | 25%        |
+| Practice Mode | User answered at least X questions            | 25%        |
+| Quiz Mode     | User completed at least one quiz for subtopic | 25%        |
+| Mock Exam     | Subtopic was included in a completed mock     | 25%        |
+
+→ Total per subtopic = 100% if all are done.
+
+---
+
+### 📊 OVERALL PROGRESS FORMULA
+
+```plaintext
+Overall Progress (%) = 
+  (Sum of all subtopic progress scores / Total number of subtopics) * 100
+```
+
+> Example: If there are 41 subtopics and a user has fully completed 20 subtopics and partially completed 5:
+
+```plaintext
+( (20 * 100%) + (5 * 50%) ) / 41 = ((2000 + 250) / 41) ≈ 54.88% overall progress
+```
+
+---
+
+### ✅ IMPLEMENTATION CHECKLIST
+
+1. **Track user activity** in your database per subtopic:
+
+   * `hasViewedReview`
+   * `practiceQuestionsCompleted`
+   * `quizCompleted`
+   * `includedInMockExamCompletion`
+
+2. **Assign status points** as shown above.
+
+3. **Store a `progress` field** per subtopic for each user, update when any mode is used.
+
+4. **Calculate total average** progress across all subtopics in backend or client.
+
+---
+
+### 💡 OPTIONAL ENHANCEMENTS
+
+* Give visual **progress bars** for each subtopic/category.
+* Allow users to **see which parts are incomplete** (e.g., "You haven’t taken the quiz for Nervous System").
+* Display badges or streaks for completing 100% of a category.
+
+---
+
+Would you like help writing the code structure for this (Firebase, Supabase, or Node backend)?

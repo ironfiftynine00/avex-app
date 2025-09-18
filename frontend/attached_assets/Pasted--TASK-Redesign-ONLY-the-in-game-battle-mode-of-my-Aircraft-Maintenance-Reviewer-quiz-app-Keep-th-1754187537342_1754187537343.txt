@@ -1,0 +1,89 @@
+📌 TASK: Redesign ONLY the in-game battle mode of my Aircraft Maintenance Reviewer quiz app. Keep the current pre-game/lobby screen as-is. Implement the following features using modular HTML/CSS/JS (or React if already using React):
+
+
+1️⃣ Interface Layout:
+- Two players' names, avatars, and live score bars at the top.
+- Center: Question text with 4 big answer buttons (A–D), color-coded.
+- Countdown timer (15s) shown for each question.
+- Bottom: Power-up bar with 5 slots (grayed out if unused).
+- Auto-move to next question after both answer or timer ends.
+- Instant ✓/✘ feedback after answering.
+
+
+2️⃣ Gameplay Logic (like Quizizz):
+- Score depends on speed:
+  - <3s correct = 1000 pts
+  - 3–8s = 800–400 pts
+  - Wrong = 0 pts
+- Lock answer when clicked.
+- Show score animation between rounds.
+
+
+3️⃣ Power-Ups:
+- Add 5 power-ups:
+  • Afterburner – +50% next correct points
+  • Circuit Swap – Replace one wrong option with correct
+  • Ground Fault – Scramble opponent’s answer labels
+  • Double Tap – Choose 2 answers in 1 question
+  • Hydraulic Boost – Instant +500 pts
+- Show power-ups in bottom bar, click to activate.
+- Max 5 power-ups per player, used ones turn gray.
+
+
+4️⃣ Power-Up Earning System:
+- Earn power-ups through:
+  • 3 correct in a row → random power-up
+  • 2 fast correct (<4s) → Afterburner
+  • Comeback (if 2000+ pts behind, once per game) → 25% chance for power-up
+
+
+🔁 Logic:
+
+if (streak === 3) { giveRandomPowerUp(); streak = 0; }
+ if (fastCorrect === 2) { givePowerUp("Afterburner"); fastCorrect = 0; }
+ if (behindBy2000 && !comebackUsed) {
+ if (Math.random() < 0.25) { giveRandomPowerUp(); comebackUsed = true; }
+ }
+
+
+5️⃣ End of Match:
+- Show:
+  • Total score, correct/wrong
+  • Fastest answer time
+  • Power-ups used
+  • Winner message
+- Buttons: Rematch | Return Home
+
+
+6️⃣ Code Organization (Modular Required):
+If Vanilla JS:
+
+/battle-mode/
+ ├── battle-game.html
+ ├── battle-style.css
+ ├── battle-logic.js
+ ├── powerups.js
+ ├── ui.js
+
+
+If React:
+
+/src/components/
+ ├── BattleGame.jsx
+ ├── QuestionCard.jsx
+ ├── PowerUps.jsx
+ ├── ScoreBar.jsx
+
+
+7️⃣ Visual Style:
+- Aviation theme: blue/orange, gauges, metallic buttons
+- Optional: add sound effects (boost, click, buzzer)
+
+
+⚠️ DO NOT change any lobby/start screen code. Only modify the game question/battle interface.
+
+
+🎯 GOAL: Make the in-game quiz feel fast, competitive, and reward smart + fast answers with power-ups. Follow Quizizz-style flow.
+
+
+Now please generate all required files and code.

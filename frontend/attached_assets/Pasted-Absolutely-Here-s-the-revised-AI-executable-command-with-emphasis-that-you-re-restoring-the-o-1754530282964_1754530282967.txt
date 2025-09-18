@@ -1,0 +1,99 @@
+Absolutely. Here's the revised **AI-executable command** with emphasis that you're **restoring the original functionalities of Review, Practice, and Quiz modes — while keeping the upgraded grid-based UI flow** intact.
+
+---
+
+## ✅ AI Command – Restore Original Study Mode Functions While Retaining Upgraded Grid UI
+
+---
+
+### 🧩 OVERVIEW
+
+> **Retain** the newly applied **grid-based interface and page navigation flow**,
+> but **restore the original functionality** of:
+>
+> * **Review Mode**
+> * **Practice Mode**
+> * **Quiz Mode**
+
+> The core logic and experience of each mode **must function exactly as before the UI upgrade**, applied only to the new navigation structure.
+
+---
+
+### 🔁 NAVIGATION FLOW
+
+```
+Study Mode (grid) → Category (grid) → Subtopic (grid) → [Mode-Specific Functionality Page]
+```
+
+---
+
+## 🔧 MODE FUNCTIONALITIES TO RESTORE
+
+---
+
+### 🟦 1. REVIEW MODE
+
+**Route:** `/study/review/category/:categoryId/subtopic/:subtopicId`
+
+**Restore This Behavior:**
+
+> * Display the original **review materials** for the subtopic:
+>
+>   * Images
+>   * Explanations
+> * No questions or answer inputs
+> * Keep styling consistent with the upgraded grid layout
+
+✅ This page must function as a **study-only content viewer**, just like before the UI update.
+
+---
+
+### 🟩 2. PRACTICE MODE
+
+**Route:** `/study/practice/category/:categoryId/subtopic/:subtopicId`
+
+**Restore This Behavior:**
+
+> * Load **questions** from the selected subtopic
+> * After selecting an answer:
+>
+>   * Indicate **correct or incorrect** via color highlight
+>   * Show **explanation** below the question
+> * No timer, no score tracking
+> * One question shown at a time (same as before)
+
+✅ Re-apply **original Practice Mode logic** while keeping the upgraded grid navigation.
+
+---
+
+### 🟥 3. QUIZ MODE
+
+**Route:**
+
+1. Setup: `/study/quiz/category/:categoryId/subtopic/:subtopicId/setup`
+2. Quiz Start: `/study/quiz/category/:categoryId/subtopic/:subtopicId/questions`
+
+**Restore This Behavior:**
+
+> * After selecting a subtopic, show a **Quiz Setup Page**:
+>
+>   * Set number of questions
+>   * Choose timer duration
+>   * Select allowed skips
+> * Then begin the quiz with:
+>
+>   * Timer
+>   * Score tracking
+>   * Skip logic
+
+✅ The full **pre-UI-upgrade Quiz Mode flow** must be brought back using the new subtopic route.
+
+---
+
+## 🔒 Important:
+
+> The **logic, scoring, display rules, and per-mode behavior** must remain the **same as they were before** — only the **navigation and visual layout** (grid interface and multi-page selection) have changed.
+
+---
+
+Let me know if you want a **code sample or file breakdown** for this restoration.

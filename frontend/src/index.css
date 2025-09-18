@@ -1,0 +1,609 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Volume Slider Styling */
+.slider {
+  -webkit-appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: #ddd;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 10px hsla(var(--primary), 0.5);
+}
+
+.slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 10px hsla(var(--primary), 0.5);
+}
+
+/* Screen shake animation for sabotage power-up */
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.animate-shake {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+/* Ranking climbing animations */
+@keyframes climb-up {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes climb-down {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(20px); }
+  100% { transform: translateY(0); }
+}
+
+.animate-climb-up {
+  animation: climb-up 0.8s ease-in-out;
+  background: linear-gradient(45deg, #10b981, #3b82f6);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.animate-climb-down {
+  animation: climb-down 0.8s ease-in-out;
+  background: linear-gradient(45deg, #ef4444, #dc2626);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(240, 10%, 3.9%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(240, 10%, 3.9%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(240, 10%, 3.9%);
+  --primary: hsl(221, 83%, 53%);
+  --primary-foreground: hsl(210, 40%, 98%);
+  --secondary: hsl(210, 40%, 96%);
+  --secondary-foreground: hsl(222.2, 84%, 4.9%);
+  --muted: hsl(210, 40%, 96%);
+  --muted-foreground: hsl(215.4, 16.3%, 46.9%);
+  --accent: hsl(210, 40%, 96%);
+  --accent-foreground: hsl(222.2, 84%, 4.9%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --border: hsl(214.3, 31.8%, 91.4%);
+  --input: hsl(214.3, 31.8%, 91.4%);
+  --ring: hsl(221, 83%, 53%);
+  --radius: 0.5rem;
+  --chart-1: hsl(12, 76%, 61%);
+  --chart-2: hsl(173, 58%, 39%);
+  --chart-3: hsl(197, 37%, 24%);
+  --chart-4: hsl(43, 74%, 66%);
+  --chart-5: hsl(27, 87%, 67%);
+
+  /* Avex Design System Colors */
+  --avex-blue: hsl(221, 83%, 53%);
+  --avex-dark-blue: hsl(224, 76%, 48%);
+  --avex-indigo: hsl(238, 83%, 67%);
+  --avex-purple: hsl(258, 77%, 64%);
+  --avex-violet: hsl(271, 81%, 56%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --primary: hsl(221, 83%, 53%);
+  --primary-foreground: hsl(210, 40%, 98%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --ring: hsl(240, 4.9%, 83.9%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  /* Battle Mode Text Wrapping and Overflow Fixes */
+  .question-text, .choice-option {
+    word-wrap: break-word;         /* Allows long words to break */
+    white-space: normal;           /* Allows multiple lines */
+    overflow-wrap: break-word;     /* Ensures wrapping on overflow */
+    text-overflow: ellipsis;       /* Adds '...' if text still overflows */
+    max-width: 100%;               /* Prevents overflowing horizontally */
+    font-size: 1rem;               /* Adjust as needed for readability */
+  }
+
+  /* Badge enhancements */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Badge carousel animation */
+  @keyframes carousel-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-carousel-scroll {
+    animation: carousel-scroll 20s linear infinite;
+  }
+
+  /* Pause animation on hover */
+  .animate-carousel-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  .animate-pulse-subtle {
+    animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-subtle {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.9;
+      transform: scale(1.02);
+    }
+  }
+
+  .question-container, .choices-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  /* Enhanced battle mode text readability */
+  .battle-question-text {
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    line-height: 1.6;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+  }
+
+  .battle-choice-text {
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    line-height: 1.4;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+  }
+
+  /* Responsive design for battle mode */
+  @media (max-width: 768px) {
+    .question-text, .choice-option, .battle-question-text, .battle-choice-text {
+      font-size: 0.9rem;
+    }
+  }
+
+  /* Avex specific styles */
+  .avex-card {
+    @apply bg-card border border-border rounded-lg hover:scale-105 hover:shadow-xl transition-all duration-200;
+  }
+
+  .avex-button-primary {
+    @apply bg-gradient-to-r from-avex-blue to-avex-indigo text-white font-medium py-2 px-4 rounded-lg hover:scale-105 transition-transform;
+  }
+
+  .avex-button-secondary {
+    @apply bg-gradient-to-r from-avex-purple to-avex-violet text-white font-medium py-2 px-4 rounded-lg hover:scale-105 transition-transform;
+  }
+
+  .flip-card {
+    perspective: 1000px;
+  }
+
+  .flip-card-inner {
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+  }
+
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front, .flip-card-back {
+    backface-visibility: hidden;
+  }
+
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+
+  .category-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .progress-ring {
+    transform: rotate(-90deg);
+  }
+
+  .progress-ring-circle {
+    stroke-dasharray: 251.2;
+    stroke-dashoffset: 251.2;
+    transition: stroke-dashoffset 0.35s;
+  }
+}
+
+@layer utilities {
+  .text-avex-blue {
+    color: var(--avex-blue);
+  }
+  
+  .text-avex-dark-blue {
+    color: var(--avex-dark-blue);
+  }
+  
+  .text-avex-indigo {
+    color: var(--avex-indigo);
+  }
+  
+  .text-avex-purple {
+    color: var(--avex-purple);
+  }
+  
+  .text-avex-violet {
+    color: var(--avex-violet);
+  }
+  
+  .bg-avex-blue {
+    background-color: var(--avex-blue);
+  }
+  
+  .bg-avex-dark-blue {
+    background-color: var(--avex-dark-blue);
+  }
+  
+  .bg-avex-indigo {
+    background-color: var(--avex-indigo);
+  }
+  
+  .bg-avex-purple {
+    background-color: var(--avex-purple);
+  }
+  
+  .bg-avex-violet {
+    background-color: var(--avex-violet);
+  }
+  
+  .border-avex-blue {
+    border-color: var(--avex-blue);
+  }
+
+  .animate-bounce-subtle {
+    animation: bounce-subtle 2s infinite;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.2s ease-out;
+  }
+
+  /* Fix dropdown overlay issues */
+  .dropdown-fix {
+    z-index: 9999 !important;
+    position: relative !important;
+  }
+  
+  /* Ensure all Radix portals have proper z-index */
+  [data-radix-portal] {
+    z-index: 9999 !important;
+  }
+  
+  /* Fix select content overlay */
+  [data-radix-select-content] {
+    z-index: 9999 !important;
+    position: relative !important;
+  }
+  
+  /* Fix dropdown menu content overlay */
+  [data-radix-dropdown-menu-content] {
+    z-index: 9999 !important;
+    position: relative !important;
+  }
+  
+  /* Fix dialog overlay */
+  [data-radix-dialog-overlay] {
+    z-index: 9998 !important;
+  }
+  
+  /* Fix popover content overlay */
+  [data-radix-popover-content] {
+    z-index: 9999 !important;
+    position: relative !important;
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Battle Theme Animations */
+@keyframes battle-glow {
+  0%, 100% { 
+    box-shadow: 0 0 5px var(--battle-primary);
+  }
+  50% { 
+    box-shadow: 0 0 20px var(--battle-primary), 0 0 30px var(--battle-primary);
+  }
+}
+
+@keyframes battle-neon {
+  0%, 100% { 
+    text-shadow: 0 0 5px var(--battle-primary);
+  }
+  50% { 
+    text-shadow: 0 0 10px var(--battle-primary), 0 0 20px var(--battle-primary);
+  }
+}
+
+@keyframes battle-shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+@keyframes battle-wave {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes battle-flame {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  25% { 
+    transform: scale(1.05) rotate(2deg);
+    filter: hue-rotate(10deg);
+  }
+  75% { 
+    transform: scale(0.95) rotate(-2deg);
+    filter: hue-rotate(-10deg);
+  }
+}
+
+/* Battle Theme Intensity Classes */
+.battle-subtle .battle-animated {
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+}
+
+.battle-normal .battle-animated {
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+}
+
+.battle-intense .battle-animated {
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
+
+/* Battle Theme Effect Classes */
+.battle-glow {
+  animation: battle-glow 2s infinite;
+}
+
+.battle-neon {
+  animation: battle-neon 1.5s infinite;
+}
+
+.battle-shimmer {
+  background: linear-gradient(90deg, transparent, var(--battle-primary), transparent);
+  background-size: 200px 100%;
+  animation: battle-shimmer 2s infinite;
+}
+
+.battle-wave {
+  animation: battle-wave 2s infinite;
+}
+
+.battle-flame {
+  animation: battle-flame 1.5s infinite;
+}
+
+/* Battle Theme Component Styles */
+.battle-button:hover {
+  background: var(--battle-gradient-button) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.battle-card {
+  background: var(--battle-gradient-card);
+  border-color: var(--battle-border);
+}
+
+.battle-powerup {
+  background: var(--battle-powerup-bg);
+  border-color: var(--battle-primary);
+  transition: all 0.3s ease;
+}
+
+/* Enhanced Text Layout Utilities for Battle Mode */
+.battle-question-text {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  line-height: 1.6;
+  max-width: 100%;
+}
+
+.battle-answer-text {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  line-height: 1.4;
+  max-width: 100%;
+  white-space: normal;
+}
+
+.battle-answer-button {
+  min-height: 4rem;
+  height: auto;
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .battle-answer-button {
+    min-height: 3.5rem;
+    padding: 0.75rem;
+  }
+  
+  .battle-question-text {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .battle-answer-text {
+    font-size: 0.875rem;
+    line-height: 1.3;
+  }
+}
+
+/* Exam Results Page Animations */
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes celebration-bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes trophy-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(255, 193, 7, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 193, 7, 0.8));
+  }
+}
+
+.celebration-bounce {
+  animation: celebration-bounce 2s infinite;
+}
+
+.trophy-glow {
+  animation: trophy-glow 2s infinite;
+}
+
+.confetti-particle {
+  animation: confetti-fall 3s ease-out forwards;
+}

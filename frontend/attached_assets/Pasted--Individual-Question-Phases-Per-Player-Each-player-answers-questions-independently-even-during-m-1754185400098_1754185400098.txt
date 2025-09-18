@@ -1,0 +1,40 @@
+🔄 Individual Question Phases Per Player
+Each player answers questions independently, even during multiplayer battle.
+A player’s screen must not auto-switch to the next question just because the opponent already answered.
+As long as a player has time left, they can use it without interruption.
+
+
+
+⏱️ Timer & Question Flow Fix
+Each player should only move to the next question when their own timer ends or when they click submit.
+Do not auto-advance questions based on the other player’s actions.
+The countdown timer must work properly and not skip to the next question early.
+
+
+📊 Rankings Display
+Preview Ranking: After each question, show a short animation or display showing current player rankings based on scores.
+Final Ranking: After all questions are done or a player concedes, show final results and declare the winner.
+Rankings should move, slide, or animate to make it exciting.
+
+
+🔘 Exit / Concede Button
+Add a clear “Exit / Concede” button during the quiz battle.
+If a player clicks it:
+Ask: “Are you sure you want to concede this match?”
+If confirmed, they are removed from the match.
+The opponent sees a message: “Opponent Conceded – You Win!” with a victory animation.
+
+
+🎉 Battle Animations & Sounds
+Add sound effects and visual animations to make it fun and competitive:
+✅ Answer Selection: Play a satisfying sound and show a quick effect when an answer is selected.
+⌛ Timer Warning: When time is almost up (e.g. last 5 seconds), change timer color to red, flash screen slightly, and play a countdown sound.
+🔼 Ranking Movements: After each question, animate the score changes (e.g., rankings slide up/down).
+🧠 Power-Ups: When using a power-up, show a cool animation and distinct sound effect based on the type (e.g., freeze timer, eliminate option, boost score).
+
+Summary for Development
+Goal: Improve user experience in the quiz battle by:
+Ensuring fair individual gameplay timing
+Displaying real-time animated score feedback
+Allowing controlled exits with proper match outcomes
+Making the battle fun and exciting with sounds and animations

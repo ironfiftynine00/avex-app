@@ -1,0 +1,105 @@
+One account = One user only
+
+No sharing across multiple devices/browsers.
+
+Login is only possible when there’s no other active session.
+
+When the browser is completely closed → the session is automatically destroyed → user must log in again.
+
+🔹 Backend Implementation (Node.js + Express + PostgreSQL Example)
+1. Database: user_sessions
+CREATE TABLE user_sessions (
+  id SERIAL PRIMARY KEY,
+  user_id INT NOT NULL,
+  session_id TEXT NOT NULL,
+  is_active BOOLEAN DEFAULT TRUE,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+2. Login Route
+
+Block new login if account already has an active session.
+
+import { Request, Response } from "express";
+import { v4 as uuidv4 } from "uuid";
+import { db } from "./db"; // your DB client
+
+export async function login(req: Request, res: Response) {
+  const { userId } = req.body;
+
+  // Check if user already has an active session
+  const active = await db.query(
+    "SELECT * FROM user_sessions WHERE user_id = $1 AND is_active = TRUE",
+    [userId]
+  );
+
+  if (active.rows.length > 0) {
+    return res.status(403).json({ message: "This account is already logged in on another device." });
+  }
+
+  // Create new session
+  const sessionId = uuidv4();
+  await db.query(
+    "INSERT INTO user_sessions (user_id, session_id, is_active) VALUES ($1, $2, TRUE)",
+    [userId, sessionId]
+  );
+
+  // Store session in a cookie (expires on browser close)
+  res.cookie("session_id", sessionId, {
+    httpOnly: true,
+    sameSite: "strict",
+    secure: true,  // true if HTTPS
+  });
+
+  res.json({ message: "Login successful" });
+}
+
+3. Middleware: Enforce Session
+
+Only allow access if the session is valid.
+
+export async function requireSession(req: Request, res: Response, next: Function) {
+  const sessionId = req.cookies.session_id;
+  if (!sessionId) return res.status(401).json({ message: "Not logged in" });
+
+  const result = await db.query(
+    "SELECT * FROM user_sessions WHERE session_id = $1 AND is_active = TRUE",
+    [sessionId]
+  );
+
+  if (result.rows.length === 0) {
+    return res.status(401).json({ message: "Session expired or invalid" });
+  }
+
+  req.user = { id: result.rows[0].user_id };
+  next();
+}
+
+4. Logout Route
+export async function logout(req: Request, res: Response) {
+  const sessionId = req.cookies.session_id;
+
+  await db.query(
+    "UPDATE user_sessions SET is_active = FALSE WHERE session_id = $1",
+    [sessionId]
+  );
+
+  res.clearCookie("session_id");
+  res.json({ message: "Logged out successfully" });
+}
+
+5. Automatic Logout on Browser Close
+
+Since we are using session cookies (no maxAge set), the cookie is deleted when the browser is completely closed.
+
+On next request after reopening the browser, no cookie will be found → backend will reject → user must log in again.
+
+This ensures one account is locked to one active browser session only.
+
+✅ Final Behavior:
+
+If user A logs in → they occupy the account.
+
+If they try logging in from another browser/device → blocked.
+
+If they close the browser → session cookie is deleted → backend marks them as logged out → they must log in again.

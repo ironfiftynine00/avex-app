@@ -1,0 +1,67 @@
+Got it ✅ You want this rule for your **Mock Exam & Quiz Mode**:
+
+* When the user **skips a question**, it should not disappear forever.
+* The skipped questions must be **saved**.
+* After the user finishes all **unskipped questions**, the app should **bring back all skipped questions** before showing the result.
+* That way, the user cannot submit without answering every question.
+
+---
+
+## 🔹 Easy-to-Understand Command (Rule)
+
+**“If a user skips a question, it is saved and shown again at the end of the exam. The user must answer all skipped questions before the results are displayed.”**
+
+---
+
+## 🔹 Example Logic (Pseudocode)
+
+```js
+let questions = [Q1, Q2, Q3, Q4, Q5];   // all questions
+let skipped = [];                        // store skipped questions
+let answered = [];                       // store answered ones
+
+function answerQuestion(qId, answer) {
+  answered.push({ qId, answer });
+}
+
+function skipQuestion(qId) {
+  skipped.push(qId);
+}
+
+function getNextQuestion() {
+  if (questions.length > 0) {
+    return questions.shift(); // get next unskipped
+  } else if (skipped.length > 0) {
+    return skipped.shift();   // bring skipped back
+  } else {
+    return null;              // all done, show result
+  }
+}
+```
+
+---
+
+## 🔹 Flow in Mock Exam / Quiz
+
+1. User starts → questions come one by one.
+2. If **answered**, go to next.
+3. If **skipped**, save it in `skipped[]`.
+4. After last unskipped → system pulls questions from `skipped[]`.
+5. User must answer skipped ones.
+6. Only when both `questions[]` and `skipped[]` are empty → results are shown.
+
+---
+
+✅ Example:
+
+* Questions: Q1, Q2, Q3, Q4
+* User answers Q1 ✅
+* Skips Q2 ❌ → goes into skipped list
+* Answers Q3 ✅
+* Answers Q4 ✅
+* Now system shows skipped Q2 again 🔁
+* User must answer Q2 → then result shown 🎯
+
+---
+
+Do you want me to **write the actual React/Frontend code** that implements this skip → revisit → result flow, so you can drop it into your Avex app?
