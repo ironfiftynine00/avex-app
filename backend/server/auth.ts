@@ -104,7 +104,13 @@ export function setupAuth(app: Express) {
           if (!user || !(await comparePasswords(password, user.password))) {
             return done(null, false, { message: "Invalid email or password" });
           }
-          return done(null, user);
+          return done(null, {
+            ...user,
+            firstName: user.firstName || undefined,
+            lastName: user.lastName || undefined,
+            nickname: user.nickname || undefined,
+            profileImageUrl: user.profileImageUrl || undefined,
+          });
         } catch (error) {
           return done(error);
         }
@@ -116,7 +122,17 @@ export function setupAuth(app: Express) {
   passport.deserializeUser(async (id: number, done) => {
     try {
       const user = await storage.getUser(id.toString());
-      done(null, user);
+      if (user) {
+        done(null, {
+          ...user,
+          firstName: user.firstName || undefined,
+          lastName: user.lastName || undefined,
+          nickname: user.nickname || undefined,
+          profileImageUrl: user.profileImageUrl || undefined,
+        });
+      } else {
+        done(null, null);
+      }
     } catch (error) {
       done(error);
     }
@@ -149,7 +165,13 @@ export function setupAuth(app: Express) {
           return res.status(500).json({ message: "Registration failed" });
         }
         
-        req.login(user, async (err) => {
+        req.login({
+          ...user,
+          firstName: user.firstName || undefined,
+          lastName: user.lastName || undefined,
+          nickname: user.nickname || undefined,
+          profileImageUrl: user.profileImageUrl || undefined,
+        }, async (err) => {
           if (err) return next(err);
           
           try {
@@ -208,7 +230,13 @@ export function setupAuth(app: Express) {
         }
         
         // Proceed with authentication
-        req.login(user, async (err) => {
+        req.login({
+          ...user,
+          firstName: user.firstName || undefined,
+          lastName: user.lastName || undefined,
+          nickname: user.nickname || undefined,
+          profileImageUrl: user.profileImageUrl || undefined,
+        }, async (err) => {
           if (err) return next(err);
           
           try {
@@ -381,8 +409,8 @@ export function setupAuth(app: Express) {
       if (existingUser) {
         // Update existing user with new password
         const hashedPassword = await hashPassword(password);
-        await storage.updateUserPassword(existingUser.id, hashedPassword);
-        await storage.updateUserStatus(existingUser.id, 'approved');
+        await storage.changeUserPassword(existingUser.id.toString(), password);
+        await storage.updateUserStatus(existingUser.id.toString(), 'approved');
         return res.json({ 
           message: "Test user updated",
           email: email,

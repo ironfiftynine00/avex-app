@@ -59,10 +59,9 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // By default, do NOT serve the client from the backend.
-  // To serve the built client from the backend set environment variable SERVE_CLIENT=true.
-  // This lets you host frontend separately (e.g. Vercel) and backend on Railway.
-  
+  // ALWAYS serve the app on port 5000
+  // this serves both the API and the client.
+  // It is the only port that is not firewalled.
   const port = 5000;
   server.listen({
     port,
